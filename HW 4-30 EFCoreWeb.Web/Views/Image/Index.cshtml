@@ -1,0 +1,18 @@
+﻿@using HW_4_30_EFCoreWeb.Data
+
+@model IndexViewModel;
+
+@foreach (Image image in Model.Images)
+{
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="bg-light p-4 rounded shadow mb-3" style="margin-bottom: 20px; text-align: center;">
+                <a href="/image/viewimage?id=@image.Id">
+                    <h3>@image.Title</h3>
+                    <h5>Uploaded at: @image.DateUploaded.ToShortTimeString() @image.DateUploaded.ToShortDateString() </h5>
+                    <img style="width: 400px;" src=/Images/@image.ImagePath />
+                </a>
+            </div>
+        </div>
+    </div>
+}
