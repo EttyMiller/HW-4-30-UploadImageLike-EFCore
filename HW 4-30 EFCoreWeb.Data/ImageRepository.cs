@@ -44,7 +44,8 @@ namespace HW_4_30_EFCoreWeb.Data
         public int GetLikes(int id)
         {
             using var ctx = new ImageDataContext(_connectionString);
-            return ctx.Images.FirstOrDefault(p => p.Id == id).Likes;
+            var likes = ctx.Database.SqlQuery<LikesResult>($"SELECT Likes FROM Images WHERE Id = {id}").Select(x => x.Likes).FirstOrDefault();
+            return likes;
         }
 
     }
